@@ -151,11 +151,42 @@ $("#contoh").onclick=()=>{
 };
 $("#cetak").onclick=()=>mode(true);
 $("#kembali").onclick=()=>mode(false);
-$("#unduh").onclick=()=>window.print();
+const API="https://cvpay.mfwdz-store.workers.dev";
+async function bayarLaluCetak(){
+ const tb=$("#unduh");tb.disabled=true;
+ try{
+  const r=await(await fetch(API+"/api/order",{method:"POST"})).json();
+  if(!r.url)throw 0;
+  location.href=r.url;
+ }catch(e){alert("Gagal membuat pembayaran, coba lagi.");tb.disabled=false}
+}
+$("#unduh").onclick=bayarLaluCetak;
 addEventListener("resize",fit);
 addEventListener("beforeprint",()=>{P.style.transform="none"});
 addEventListener("afterprint",fit);
 if(document.fonts)document.fonts.ready.then(muatSatu);
+async function cekBayar(){
+ const id=new URLSearchParams(location.search).get("order");
+ if(!id)return;
+ mode(true);
+ const tb=$("#unduh");tb.disabled=true;tb.textContent="Memeriksa pembayaran...";
+ let akhir="none";
+ for(let i=0;i<20;i++){
+  try{
+   const s=(await(await fetch(API+"/api/status?order="+id)).json()).status;
+   akhir=s;
+   if(s==="paid"){
+    const c=await(await fetch(API+"/api/claim",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({order:id})})).json();
+    if(c.ok){history.replaceState(null,"",location.pathname);tb.disabled=false;tb.textContent="Download PDF";setTimeout(()=>window.print(),300);return}
+   }
+   if(s==="used"||s==="none")break;
+  }catch(e){}
+  await new Promise(r=>setTimeout(r,3000));
+ }
+ tb.disabled=false;tb.textContent="Download PDF";
+ alert(akhir==="used"?"Pembayaran ini sudah dipakai untuk satu kali download. Untuk download berikutnya, silakan bayar lagi.":"Pembayaran belum terkonfirmasi. Jika sudah membayar, tunggu sebentar lalu muat ulang halaman ini.");
+}
+setTimeout(cekBayar,0);
 render();// deteksi browser dalam aplikasi (WhatsApp/IG/FB) dan tampilkan petunjuk
 (()=>{
  const ua=navigator.userAgent||"";
