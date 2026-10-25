@@ -1,0 +1,4 @@
+/* Warna & tema (terang/gelap) aplikasi */
+:root{--bg:#e8eaee;--panel:#fff;--ink:#1c2430;--mute:#5d6877;--line:#d5d9e0;--accent:#1f3a5f;--accent-ink:#fff;--field:#f7f8fa;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181f;--panel:#1d232d;--ink:#e6e9ee;--mute:#9aa4b2;--line:#323a47;--accent:#8fb2e6;--accent-ink:#10161f;--field:#161b23}}
+:root[data-theme="dark"]{--bg:#14181f;--panel:#1d232d;--ink:#e6e9ee;--mute:#9aa4b2;--line:#323a47;--accent:#8fb2e6;--accent-ink:#10161f;--field:#161b23}

@@ -1,0 +1,13 @@
+/* Aturan cetak / simpan PDF */
+@media print{
+ @page{size:A4;margin:18mm 20mm}
+ body{background:#fff}
+ .top,.noprint,body::before{display:none!important}
+ #preview{padding:0;overflow:visible}
+ #papers{width:auto!important;transform:none!important;margin:0!important}
+ .page{width:auto;min-height:0;padding:0;margin:0;box-shadow:none;break-after:page}
+ section.page:last-of-type{break-after:auto}
+ .lamp-isi img{max-height:225mm}
+ .ed{background:none!important;box-shadow:none!important}
+ [data-ph]:empty::after,.cv-foto.kosong,.lamp.kosong,.sel.kosong{display:none!important}
+}

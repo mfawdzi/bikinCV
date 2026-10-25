@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pembuat CV & Surat Lamaran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/cv-paper.css">
+<link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+<div class="top">
+ <div class="mode-edit">
+  <h1>Pembuat CV & Surat Lamaran<small>Klik langsung pada tulisan di kertas untuk mengisi atau mengubahnya</small></h1>
+  <div class="btns">
+   <label class="chk"><input type="checkbox" id="sSurat"> Surat lamaran</label>
+   <label class="chk"><input type="checkbox" id="sLamp"> Lampiran</label>
+<button type="button" id="reset">Kosongkan</button>
+   <button type="button" id="contoh">Isi contoh</button>
+   <button type="button" id="cetak" class="pri">Cetak jadi PDF</button>
+  </div>
+ </div>
+ <div class="mode-pv">
+  <h1>Pratinjau hasil<small>Periksa dulu. Jika sudah benar, unduh PDF-nya.</small></h1>
+  <div class="btns">
+   <button type="button" id="kembali">← Kembali ubah</button>
+   <button type="button" id="unduh" class="pri">Download PDF</button>
+  </div>
+ </div>
+</div>
+<main id="preview"><div id="papers"></div></main>
+<input type="file" id="fileIn" accept="image/*" hidden>
+<script src="js/data.js"></script>
+<script src="js/templates.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

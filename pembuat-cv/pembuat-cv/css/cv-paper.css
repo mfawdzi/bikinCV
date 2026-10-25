@@ -1,0 +1,97 @@
+/* Kertas A4: surat, CV, lampiran, dan kolom yang bisa diketik langsung */
+.page{box-sizing:border-box;overflow-wrap:break-word;width:210mm;min-height:297mm;background:#fff;color:#111;padding:18mm 20mm;margin:0 0 20px;box-shadow:0 1px 4px rgba(0,0,0,.25);font:10.5pt/1.4 "Times New Roman","Liberation Serif",Georgia,serif;position:relative}
+.page p{margin:0 0 9pt;text-align:justify}
+.page h2{display:flex;justify-content:space-between;align-items:center;font:700 10.5pt/1.2 Georgia,"Times New Roman",serif;letter-spacing:2.2pt;color:#1e2a3a;margin:16pt 0 6pt;padding-bottom:3pt;border-bottom:.6pt solid #c9ced6}
+.item{position:relative;break-inside:avoid;margin-bottom:7pt}
+.split{display:flex;justify-content:space-between;gap:12pt}
+.split>b{font:700 10.5pt "Source Sans 3",Calibri,Arial,sans-serif}
+.split i{color:#444;font-size:9.5pt}
+.sub{font:italic 700 9.5pt "Source Sans 3",Calibri,Arial,sans-serif;color:#222}
+.page ul{margin:2pt 0 0;padding:0;list-style:none}
+.page li{position:relative;padding-left:16pt;margin-bottom:1.5pt;text-align:justify}
+.page li::before{content:"—";position:absolute;left:2pt}
+ul.cert{display:block;text-align:justify}
+ul.cert li{padding:0;display:inline;text-align:justify}
+ul.cert li::before{content:none}
+ul.cert li:not(:last-child)::after{content:" | "}
+.cv-head{display:flex;gap:18pt;align-items:center;padding-bottom:10pt;border-bottom:.6pt solid #c9ced6}
+.cv-foto{width:30mm;height:40mm;flex:none;display:grid;place-items:center;overflow:hidden;cursor:pointer}
+.cv-foto img{width:100%;height:100%;object-fit:cover}
+.cv-foto.kosong{border:1px dashed #b8bfca;color:#8a93a1;font:italic 9pt "Source Sans 3",Calibri,Arial,sans-serif;text-align:center;padding:4pt}
+.cv-id h1{margin:0 0 3pt;font:700 22pt/1.1 Cambria,Georgia,"Times New Roman",serif;letter-spacing:2pt;color:#1e2a3a;text-transform:uppercase}
+.cv-ttl{font:italic 10pt "Source Sans 3",Calibri,Arial,sans-serif;color:#444}
+.cv-kontak{font:italic 10pt "Source Sans 3",Calibri,Arial,sans-serif;color:#333;margin-top:2pt}
+.bio td{padding:0 6pt 2pt 0;vertical-align:top}
+.sign .ttd{height:52pt}
+.lamp{display:flex;flex-direction:column}
+.lamp-judul{border-bottom:.6pt solid #c9ced6;padding-bottom:5pt;margin-bottom:10pt;font:10.5pt "Source Sans 3",Calibri,Arial,sans-serif;color:#1e2a3a}
+.lamp-judul span.n{display:block;letter-spacing:2.2pt;font-size:9pt;color:#666}
+.lamp-judul b{font-size:13pt}
+.lamp-isi{flex:1;display:flex;align-items:flex-start;justify-content:center;cursor:pointer}
+.lamp-isi img{max-width:100%;max-height:232mm;object-fit:contain;display:block}
+.pilih{width:100%;padding:60mm 10mm;border:1px dashed #b8bfca;color:#8a93a1;font:italic 10pt "Source Sans 3",Calibri,Arial,sans-serif;text-align:center}
+/* kolom ketik */
+.ed{outline:none;border-radius:2px}
+[data-ph]:empty::after{content:attr(data-ph);color:#a3a9b3;font-style:italic;font-weight:400}
+body:not(.pv) .ed:hover{background:#eef3fb}
+body:not(.pv) .ed:focus{background:#e3edfc;box-shadow:0 0 0 1px #8fb2e6}
+.plus{font:600 9pt "Source Sans 3",Calibri,Arial,sans-serif;letter-spacing:0;color:#1f3a5f;background:#eef3fb;border:1px solid #c5d3ea;border-radius:4px;padding:2px 8px}
+.x{position:absolute;right:-15mm;top:0;width:22px;height:22px;padding:0;line-height:1;border-radius:50%;border:1px solid #d9b4b4;background:#fff;color:#a33}
+.lamp>.x{right:6mm;top:6mm}
+.addbar{text-align:center;margin-bottom:30px}
+.addbar .plus{font-size:11pt;padding:8px 16px}
+/* mode pratinjau */
+.pv .noprint,.pv .cv-foto.kosong,.pv .lamp.kosong,.pv [data-ph]:empty::after{display:none}
+.pv .cv-foto,.pv .lamp-isi{cursor:default}
+/* lampiran: dokumen kecil berbagi halaman */
+.lamp-judul{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2pt 8pt}
+.lamp-judul .n{flex-basis:100%}
+.kop-lamp{font:700 10.5pt "Source Sans 3",Calibri,Arial,sans-serif;letter-spacing:2.2pt;color:#1e2a3a;border-bottom:.6pt solid #c9ced6;padding-bottom:3pt;margin-bottom:10pt}
+.grid-k{display:grid;grid-template-columns:1fr 1fr;gap:8mm 6mm;align-content:start}
+.sel{position:relative;break-inside:avoid}
+.sel>.x{right:0;top:0}
+.lamp>.sel:not(.k){flex:1;display:flex;flex-direction:column}
+.sel.k .lamp-judul{font-size:9.5pt;padding-bottom:3pt;margin-bottom:5pt}
+.sel.k .lamp-judul b{font-size:10.5pt}
+.sel.k .lamp-isi img{max-height:70mm;border:.4pt solid #d5d9e0}
+.sel.k .pilih{padding:14mm 4mm}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:8px}
+.chips .plus{font-size:10pt;padding:6px 12px}
+.pv .sel.kosong{display:none}
+.draft{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 6pt}
+.draft>span{font:600 9pt "Source Sans 3",Calibri,Arial,sans-serif;color:#5d6877}
+.hint{display:none;margin-top:4pt;font:italic 9pt "Source Sans 3",Calibri,Arial,sans-serif;color:#5d6877}
+ul:focus-within+.hint{display:block}
+.plus.on{background:#1f3a5f;color:#fff;border-color:#1f3a5f}
+/* bagian yang bisa dihapus / dikosongkan */
+.aksi{display:flex;gap:6px}
+.pv .bag.kosong,.pv li:empty{display:none}
+@media print{.bag.kosong,li:empty{display:none!important}}
+/* tanda tangan digital */
+.ttd-box{position:relative;height:24mm;margin:2pt 0}
+.ttd-c{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair;border:1px dashed #b8bfca;border-radius:3px}
+.ttd-box.kosong::before{content:"Tanda tangan di sini";position:absolute;inset:0;display:grid;place-items:center;color:#a3a9b3;font:italic 9pt "Source Sans 3",Calibri,Arial,sans-serif;pointer-events:none}
+.ttd-box .plus{position:absolute;right:2px;bottom:2px}
+.pv .ttd-c{border-color:transparent;pointer-events:none;cursor:default}
+.pv .ttd-box.kosong::before{display:none}
+@media print{.ttd-c{border-color:transparent!important}.ttd-box.kosong::before{display:none}}
+/* layar kecil (HP/tablet): saat mengedit, kertas mengikuti lebar layar */
+@media (max-width:820px){
+ body:not(.pv) .page{width:auto;min-height:0;padding:6mm 5mm;font-size:11pt}
+ body:not(.pv) .page p,body:not(.pv) .page li{text-align:left}
+ body:not(.pv) .page h2{flex-wrap:wrap;gap:4pt 8pt;letter-spacing:1.4pt}
+ body:not(.pv) .split{flex-wrap:wrap;gap:0 12pt}
+ body:not(.pv) .split>*{min-width:0}
+ body:not(.pv) .item{padding-right:28px}
+ body:not(.pv) .x{right:0}
+ body:not(.pv) .lamp>.x{right:2mm;top:2mm}
+ body:not(.pv) .cv-head{gap:12pt}
+ body:not(.pv) .cv-id{min-width:0;flex:1}
+ body:not(.pv) .cv-id h1{font-size:16pt;letter-spacing:1pt}
+ body:not(.pv) .bio{width:100%;margin-left:0!important}
+ body:not(.pv) .sign{margin-left:auto!important;width:60%}
+ body:not(.pv) .grid-k{grid-template-columns:1fr}
+}
+.cv-fit{transform-origin:top left;display:flow-root}
+body.ukur .noprint{display:none!important}
+.rata{text-align:justify}
