@@ -4,7 +4,7 @@ const salin=o=>JSON.parse(JSON.stringify(o));
 const BARU={kerja:{jabatan:"",perusahaan:"",periode:"",uraian:""},pendidikan:{nama:"",detail:"",tahun:""},organisasi:{nama:"",jabatan:"",periode:"",uraian:""}};
 let S,tujuan;
 try{const s=localStorage.getItem("cv-fauzi-v2");S=s?JSON.parse(s):null}catch(e){S=null}
-if(!S)S=salin(D);
+if(!S){S=salin(BLANK);S.kerja=[{...BARU.kerja}];S.pendidikan=[{...BARU.pendidikan}];S.organisasi=[{...BARU.organisasi}]}
 S.dokumen=S.dokumen||[];S.foto=S.foto||"";S.tanggal=S.tanggal||hariIni();
 const P=$("#papers");
 const simpan=()=>{try{localStorage.setItem("cv-fauzi-v2",JSON.stringify(S))}catch(e){}};
