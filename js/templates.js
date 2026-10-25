@@ -39,7 +39,7 @@ function cv(){
  const org=S.organisasi.map((o,i)=>`<div class="item">${hapus("organisasi",i)}<div class="split"><span><b>${edl("organisasi",i,"nama","Nama organisasi")}</b> – ${edl("organisasi",i,"jabatan","Jabatan")}</span><i>${edl("organisasi",i,"periode","Periode")}</i></div>${tugas("organisasi",i,o,"Peran dan kegiatan")}</div>`).join("");
  const sert=String(S.sertifikat||"").replace(/\s*\|\s*/g," · ");
  return `<section class="page">
-<div class="cv-box"><div class="cv-fit"><div class="cv-head"><div class="cv-foto${S.foto?"":" kosong"}" id="fotoBox">${S.foto?`<img src="${S.foto}" alt="">`:"<span>Klik untuk menambah foto</span>"}</div>
+<div class="cv-box"><div class="cv-fit"><div class="cv-head"><label class="cv-foto${S.foto?"":" kosong"}" id="fotoBox" for="fileIn">${S.foto?`<img src="${S.foto}" alt="">`:"<span>Klik untuk menambah foto</span>"}</label>
  <div class="cv-id"><h1>${ed("nama","Nama lengkap")}</h1><div class="cv-ttl">${ed("ttl","Tempat, tanggal lahir")}</div><div class="cv-kontak">${ed("telp","Telepon")} &nbsp;|&nbsp; ${ed("email","Email")} &nbsp;|&nbsp; ${ed("alamat","Alamat")}</div></div></div>
 ${judul("PROFIL SINGKAT")}<div class="draft noprint"><span>Pilih draft:</span>${DRAFT_PROFIL.map((d,i)=>`<button type="button" class="plus" data-draft="${i}">${d.label}</button>`).join("")}<span><i>Silakan edit sesuai keinginan Anda, Anda juga bisa menggunakan draft ini</i></span></div>${ed("profil","Tulis ringkasan singkat tentang diri Anda","p")}
  ${bag("kerja",false,`${judul("PENGALAMAN KERJA","kerja","kerja","Tidak memiliki pengalaman")}${kerja}`)}
@@ -52,7 +52,7 @@ ${judul("PROFIL SINGKAT")}<div class="draft noprint"><span>Pilih draft:</span>${
 }
 
 function lampiran(){
- const sel=(d,i,kecil)=>`<div class="sel${kecil?" k":""}${d.file?"":" kosong"}">${hapus("dokumen",i)}<div class="lamp-judul">${kecil?"":`<span class="n">LAMPIRAN DOKUMEN</span>`}<b><span class="ed" contenteditable="true" data-dok="${i}" data-ph="Ketik nama dokumen">${esc(d.nama)}</span></b><button type="button" class="plus noprint" data-ukuran="${i}">Ukuran: ${kecil?"kecil":"besar"}</button></div><div class="lamp-isi" data-pick="${i}">${d.file?`<img src="${d.file}" alt="">`:`<div class="pilih">Klik untuk memilih foto / scan</div>`}</div></div>`;
+ const sel=(d,i,kecil)=>`<div class="sel${kecil?" k":""}${d.file?"":" kosong"}">${hapus("dokumen",i)}<div class="lamp-judul">${kecil?"":`<span class="n">LAMPIRAN DOKUMEN</span>`}<b><span class="ed" contenteditable="true" data-dok="${i}" data-ph="Ketik nama dokumen">${esc(d.nama)}</span></b><button type="button" class="plus noprint" data-ukuran="${i}">Ukuran: ${kecil?"kecil":"besar"}</button></div><label class="lamp-isi" for="fileIn" data-pick="${i}">${d.file?`<img src="${d.file}" alt="">`:`<div class="pilih">Klik untuk memilih foto / scan</div>`}</label></div>`;
  const hal=[];let g=null;
  S.dokumen.forEach((d,i)=>{
   if(d.ukuran==="kecil"){if(!g||g.length>=6){g=[];hal.push({kecil:true,isi:g})}g.push([d,i])}

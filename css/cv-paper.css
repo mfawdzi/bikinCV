@@ -43,7 +43,7 @@ body:not(.pv) .ed:focus{background:#e3edfc;box-shadow:0 0 0 1px #8fb2e6}
 .addbar .plus{font-size:11pt;padding:8px 16px}
 /* mode pratinjau */
 .pv .noprint,.pv .cv-foto.kosong,.pv .lamp.kosong,.pv [data-ph]:empty::after{display:none}
-.pv .cv-foto,.pv .lamp-isi{cursor:default}
+.pv .cv-foto,.pv .lamp-isi{cursor:default;pointer-events:none}
 /* lampiran: dokumen kecil berbagi halaman */
 .lamp-judul{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2pt 8pt}
 .lamp-judul .n{flex-basis:100%}

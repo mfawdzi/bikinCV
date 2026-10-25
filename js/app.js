@@ -83,8 +83,8 @@ P.addEventListener("click",e=>{
  else if(g){const [k,i]=g.dataset.tog.split(":"),o=S[k][+i];o.tanpa=!o.tanpa;render();if(!o.tanpa){const el=P.querySelector(`[data-l="${k}:${i}:uraian"]`);if(el)el.focus({preventScroll:true})}}
  else if(h){S.hide=S.hide||{};S.hide[h.dataset.hide]=true;render()}
  else if(w){const k=w.dataset.show;S.hide[k]=false;render();const el=P.querySelector({keahlian:'[data-k="teknis"]',sertifikat:'[data-k="sertifikat"]',organisasi:'[data-l^="organisasi:"]',kerja:'[data-l^="kerja:"]'}[k]);if(el){el.focus({preventScroll:true});el.scrollIntoView({block:"center",behavior:"smooth"})}}
- else if(t.closest("#fotoBox")){tujuan="foto";$("#fileIn").click()}
- else if(p){tujuan=+p.dataset.pick;$("#fileIn").click()}
+else if(t.closest("#fotoBox")){tujuan="foto"}
+else if(p){tujuan=+p.dataset.pick}
 });
 $("#fileIn").addEventListener("change",e=>{
  const f=e.target.files[0];e.target.value="";if(!f)return;
