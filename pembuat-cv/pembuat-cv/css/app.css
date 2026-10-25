@@ -8,7 +8,7 @@ body.pv .mode-edit,body:not(.pv) .mode-pv{display:none}
 .top small{display:block;color:var(--mute);font-weight:400;font-size:12px}
 .btns{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .chk{display:flex;gap:5px;align-items:center;font-size:13px;color:var(--mute)}
-button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 12px}
+button{white-space:nowrap;font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 12px}
 button.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 #preview{padding:24px 16px 60px;overflow-x:hidden}
