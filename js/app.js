@@ -156,4 +156,12 @@ addEventListener("resize",fit);
 addEventListener("beforeprint",()=>{P.style.transform="none"});
 addEventListener("afterprint",fit);
 if(document.fonts)document.fonts.ready.then(muatSatu);
-render();
+render();// deteksi browser dalam aplikasi (WhatsApp/IG/FB) dan tampilkan petunjuk
+(()=>{
+ const ua=navigator.userAgent||"";
+ const dalam=/FBAN|FBAV|FB_IAB|Instagram|Line\/|MicroMessenger|Snapchat|TikTok|; wv\)|WhatsApp/i.test(ua)||(/iPhone|iPad|iPod/i.test(ua)&&!/Safari/i.test(ua));
+ if(!dalam)return;
+ $("#inapp").style.display="block";
+ $("#inappSalin").onclick=()=>{const u=location.href;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>alert("Link disalin. Tempel di Chrome atau Safari."),()=>prompt("Salin link ini lalu buka di Chrome atau Safari:",u))};
+ if(/Android/i.test(ua)){const a=$("#inappChrome");a.style.display="inline";a.href="intent://"+location.host+location.pathname+location.search+"#Intent;scheme=https;package=com.android.chrome;end"}
+})();
