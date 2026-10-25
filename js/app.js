@@ -89,7 +89,7 @@ P.addEventListener("click",e=>{
 $("#fileIn").addEventListener("change",e=>{
  const f=e.target.files[0];e.target.value="";if(!f)return;
  const r=new FileReader();
- r.onload=()=>{const im=new Image();im.onload=()=>{
+r.onload=()=>{const im=new Image();im.onerror=()=>alert("File tidak bisa dibaca. Gunakan foto JPG atau PNG, bukan PDF.");im.onload=()=>{
   const c=document.createElement("canvas"),x=c.getContext("2d");
   if(tujuan==="foto"){
    c.width=360;c.height=480;const s=Math.max(360/im.width,480/im.height),w=im.width*s,h=im.height*s;
