@@ -52,7 +52,7 @@ muatSatu();fit();simpan();
 function mode(pv){document.body.classList.toggle("pv",pv);render();kunci(pv);scrollTo(0,0);fit()}
 
 // ketik langsung di kertas
-const nilai=n=>n.tagName==="UL"?[...n.querySelectorAll("li")].map(l=>l.textContent.trim()).filter(Boolean).join("\n"):n.textContent;
+const nilai=n=>n.tagName==="UL"?[...n.querySelectorAll("li")].map(l=>l.textContent.trim()).filter(Boolean).join("\n"):n.tagName==="P"?n.innerText.replace(/\n+$/,""):n.textContent;
 P.addEventListener("input",e=>{
  const n=e.target.closest(".ed");if(!n)return;
  const v=nilai(n),d=n.dataset;
@@ -61,8 +61,8 @@ P.addEventListener("input",e=>{
  else if(d.dok!==undefined)S.dokumen[+d.dok].nama=v;
  simpan();
 });
-P.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.closest(".ed")&&!e.target.closest("ul"))e.preventDefault()});
-P.addEventListener("paste",e=>{e.preventDefault();document.execCommand("insertText",false,(e.clipboardData.getData("text/plain")||"").replace(/\n+/g," "))});
+P.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.closest(".ed")&&!e.target.closest("ul,p.ed"))e.preventDefault()});
+P.addEventListener("paste",e=>{e.preventDefault();const t=(e.clipboardData.getData("text/plain")||"").replace(/\r/g,"");document.execCommand("insertText",false,e.target.closest("p.ed")?t:t.replace(/\n+/g," "))});
 P.addEventListener("focusout",e=>{if(e.target.tagName==="UL"&&!e.target.querySelector("li"))render()});
 
 // pindah ke kolom yang baru ditambahkan

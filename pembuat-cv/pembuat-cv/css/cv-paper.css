@@ -32,6 +32,7 @@ ul.cert li:not(:last-child)::after{content:" | "}
 .pilih{width:100%;padding:60mm 10mm;border:1px dashed #b8bfca;color:#8a93a1;font:italic 10pt "Source Sans 3",Calibri,Arial,sans-serif;text-align:center}
 /* kolom ketik */
 .ed{outline:none;border-radius:2px}
+p.ed{white-space:pre-line}
 [data-ph]:empty::after{content:attr(data-ph);color:#a3a9b3;font-style:italic;font-weight:400}
 body:not(.pv) .ed:hover{background:#eef3fb}
 body:not(.pv) .ed:focus{background:#e3edfc;box-shadow:0 0 0 1px #8fb2e6}
